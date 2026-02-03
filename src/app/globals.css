@@ -15,7 +15,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  background-blend-mode: overlay;
+  /* background-blend-mode: overlay; Removed to make image visible */
 }
 
 /* Custom Utilities for 3D Flip */

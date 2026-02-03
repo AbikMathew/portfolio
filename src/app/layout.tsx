@@ -27,7 +27,9 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={`${inter.variable} ${playfair.variable} font-sans bg-[#0a0a0a] text-white antialiased selection:bg-white/20`}
-                style={{ backgroundImage: `url('${bgImage}')` }}
+                style={{
+                    backgroundImage: `radial-gradient(circle at 50% 50%, rgba(20, 30, 60, 0.4), rgba(0, 0, 0, 0.8)), url('${bgImage}')`
+                }}
             >
                 <SmoothScroll>{children}</SmoothScroll>
             </body>
