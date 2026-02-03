@@ -4,6 +4,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
 
+const getAssetPath = (path: string) => {
+    const isProd = process.env.NODE_ENV === 'production';
+    return isProd ? `/portfolio${path}` : path;
+};
+
 const projects = [
     {
         name: "IconCal",
@@ -105,7 +110,7 @@ function ProjectCard({ project }: { project: any }) {
                 <div className={`absolute inset-0 backface-hidden ${project.color} border border-white/5 rounded-2xl p-8 md:p-12 flex flex-col justify-between backdrop-blur-sm group-hover:border-white/20 overflow-hidden`}>
                     <div className="absolute inset-0 opacity-20 pointer-events-none">
                         {/* Fallback pattern or image if provided */}
-                        <Image src={project.image} alt={project.name} fill className="object-cover" />
+                        <Image src={getAssetPath(project.image)} alt={project.name} fill className="object-cover" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-0" />
 

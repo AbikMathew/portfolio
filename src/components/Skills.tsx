@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 
 const skills = {
-    "Mobile": ["Flutter", "Dart", "iOS (Swift/SwiftUI)", "React Native"],
+    "Mobile": ["Flutter", "Dart", "iOS (Swift/SwiftUI)"],
     "Web": ["HTML/CSS", "Next.js", "Tailwind CSS", "Bootstrap"],
     "Backend & DB": ["Firebase", "Node.js", "MongoDB", "SQLite", "Hive", "AWS"],
     "Tools": ["Git", "Figma", "Postman", "Jira", "ClickUp"],
-    "State Mgmt": ["Riverpod", "Bloc", "GetX", "Stacked"],
+    "State Management": ["Riverpod", "Bloc", "GetX", "Stacked"],
 };
 
 export default function Skills() {

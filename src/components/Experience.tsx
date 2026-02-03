@@ -55,7 +55,7 @@ export default function Experience() {
                 >
                     <div className="absolute inset-0 rounded-full border border-white/10 overflow-hidden">
                         <Image
-                            src="/profile_placeholder_stylized_1770110084884.png"
+                            src={process.env.NODE_ENV === 'production' ? "/portfolio/profile_placeholder_stylized_1770110084884.png" : "/profile_placeholder_stylized_1770110084884.png"}
                             alt="Abik Mathew Profile"
                             fill
                             className="object-cover"
