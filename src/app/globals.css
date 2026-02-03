@@ -11,7 +11,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: #050505;
-  background-image: url('/dark_abstract_background_1770110046912.png');
+  background-color: #050505;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;

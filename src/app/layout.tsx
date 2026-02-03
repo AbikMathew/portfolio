@@ -20,9 +20,15 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const isProd = process.env.NODE_ENV === 'production';
+    const bgImage = isProd ? '/portfolio/dark_abstract_background_1770110046912.png' : '/dark_abstract_background_1770110046912.png';
+
     return (
         <html lang="en">
-            <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#0a0a0a] text-white antialiased selection:bg-white/20`}>
+            <body
+                className={`${inter.variable} ${playfair.variable} font-sans bg-[#0a0a0a] text-white antialiased selection:bg-white/20`}
+                style={{ backgroundImage: `url('${bgImage}')` }}
+            >
                 <SmoothScroll>{children}</SmoothScroll>
             </body>
         </html>
