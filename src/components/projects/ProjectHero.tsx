@@ -13,14 +13,28 @@ export default function ProjectHero({ media, title }: { media: ProjectMedia; tit
     );
   }
   if (media.kind === 'image') {
+    const src = getAssetPath(media.src);
     return (
       <div className="case-media">
         <Image
-          src={getAssetPath(media.src)}
+          src={src}
+          alt=""
+          aria-hidden
+          fill
+          sizes="(max-width: 900px) 100vw, 1200px"
+          style={{
+            objectFit: 'cover',
+            filter: 'blur(28px) saturate(0.85) brightness(0.55)',
+            transform: 'scale(1.18)',
+            zIndex: 0,
+          }}
+        />
+        <Image
+          src={src}
           alt={media.alt}
           fill
           sizes="(max-width: 900px) 100vw, 1200px"
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: 'contain', zIndex: 1, position: 'absolute' }}
           priority
         />
       </div>

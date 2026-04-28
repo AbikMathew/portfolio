@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type TouchEvent as ReactTouchEvent } from 'react';
 import { getAssetPath } from '@/lib/asset';
 import { youtubePosterUrl } from '@/lib/youtube';
 import { cn } from '@/lib/utils';
@@ -41,6 +41,7 @@ export default function Slideshow({
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const next = useCallback(() => {
     setActive((cur) => (cur + 1) % items.length);
@@ -49,6 +50,25 @@ export default function Slideshow({
   const prev = useCallback(() => {
     setActive((cur) => (cur - 1 + items.length) % items.length);
   }, [items.length]);
+
+  const onTouchStart = (e: ReactTouchEvent) => {
+    touchStart.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+    };
+  };
+
+  const onTouchEnd = (e: ReactTouchEvent) => {
+    const start = touchStart.current;
+    if (!start) return;
+    const dx = e.changedTouches[0].clientX - start.x;
+    const dy = e.changedTouches[0].clientY - start.y;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) next();
+      else prev();
+    }
+    touchStart.current = null;
+  };
 
   useEffect(() => {
     if (paused || items.length <= 1) return;
@@ -82,6 +102,8 @@ export default function Slideshow({
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       tabIndex={0}
       role="region"
       aria-roledescription="slideshow"
