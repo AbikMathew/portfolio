@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { copy, projects } from '@/data';
 import ProjectHero from './ProjectHero';
 import ProjectMeta from './ProjectMeta';
-import Gallery from './Gallery';
 import Reveal from '@/components/ui/Reveal';
+import Slideshow from '@/components/ui/Slideshow';
 import SplitTitle from '@/components/ui/SplitTitle';
 import type { Project } from '@/types';
 
@@ -98,7 +98,7 @@ export default function ProjectCaseStudy({ project }: { project: Project }) {
                   >
                     {copy.projectDetail.galleryHeading}
                   </h3>
-                  <Gallery items={project.gallery} alt={project.title} />
+                  <Slideshow items={project.gallery} alt={`${project.title} gallery`} />
                 </div>
               )}
             </div>

@@ -3,10 +3,15 @@
 import { Fragment, useEffect, useState } from 'react';
 import { profile, copy } from '@/data';
 import Reveal from '@/components/ui/Reveal';
+import { cn } from '@/lib/utils';
 
-function splitChars(text: string) {
+function splitChars(text: string, revealed: boolean) {
   return Array.from(text).map((c, i) => (
-    <span className="char" key={i} style={{ transitionDelay: `${i * 28}ms` }}>
+    <span
+      className={cn('char', revealed && 'in')}
+      key={i}
+      style={{ transitionDelay: `${100 + i * 30}ms` }}
+    >
       {c === ' ' ? ' ' : c}
     </span>
   ));
@@ -30,7 +35,8 @@ function formatTime(timezone: string): string {
 }
 
 export default function Hero() {
-  const [time, setTime] = useState(() => formatTime(profile.timezone));
+  const [time, setTime] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     setTime(formatTime(profile.timezone));
@@ -39,10 +45,8 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const chars = document.querySelectorAll('.hero h1.name .char');
-    chars.forEach((el, i) => {
-      window.setTimeout(() => el.classList.add('in'), 120 + i * 30);
-    });
+    const t = window.setTimeout(() => setRevealed(true), 50);
+    return () => window.clearTimeout(t);
   }, []);
 
   const words = profile.name.split(' ');
@@ -62,8 +66,8 @@ export default function Hero() {
         </Reveal>
 
         <h1 className="name">
-          <span className="first">{splitChars(firstLine)}</span>
-          <span className="last">{splitChars(lastWord)}</span>
+          <span className="first">{splitChars(firstLine, revealed)}</span>
+          <span className="last">{splitChars(lastWord, revealed)}</span>
         </h1>
 
         <Reveal as="p" className="practice serif-italic" delay={2}>
@@ -75,15 +79,18 @@ export default function Hero() {
             <Reveal className="now-line" delay={3}>
               <span className="arrow">{copy.hero.nowLineArrow}</span>
               <span>{profile.currently.nowShort}</span>
-              <span className="dot-sep" style={{ color: 'var(--fg-faint)' }}>·</span>
-              <span className="blink">{time}</span>
+              {time && (
+                <>
+                  <span className="dot-sep" style={{ color: 'var(--fg-faint)' }}>·</span>
+                  <span className="blink">{time}</span>
+                </>
+              )}
             </Reveal>
           </div>
         )}
       </div>
 
-      <div className="scroll-cue">
-        <span>Scroll</span>
+      <div className="scroll-cue" aria-hidden>
         <div className="line" />
       </div>
     </section>

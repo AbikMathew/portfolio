@@ -22,13 +22,16 @@ export default function TopNav() {
 
   return (
     <nav className={cn('topnav', scrolled && 'scrolled')}>
-      <Link href="/" className="wordmark" data-lens="link">
-        {nameParts.map((part, i) => (
-          <span key={i}>
-            {part}
-            {i < nameParts.length - 1 && <span className="slash">/</span>}
-          </span>
-        ))}
+      <Link href="/" className="wordmark" data-lens="link" aria-label={profile.name}>
+        <span className="wordmark-full">
+          {nameParts.map((part, i) => (
+            <span key={i}>
+              {part}
+              {i < nameParts.length - 1 && <span className="slash">/</span>}
+            </span>
+          ))}
+        </span>
+        <span className="wordmark-short">{profile.shortName}</span>
       </Link>
       <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
         <span className="status" data-tone={profile.status.tone}>

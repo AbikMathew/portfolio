@@ -28,6 +28,7 @@ export interface Experience {
   description: string;
   highlights?: string[];
   current?: boolean;
+  images?: string[];
 }
 
 export type ProjectMedia =
