@@ -1,0 +1,91 @@
+'use client';
+
+import { Fragment, useEffect, useState } from 'react';
+import { profile, copy } from '@/data';
+import Reveal from '@/components/ui/Reveal';
+
+function splitChars(text: string) {
+  return Array.from(text).map((c, i) => (
+    <span className="char" key={i} style={{ transitionDelay: `${i * 28}ms` }}>
+      {c === ' ' ? ' ' : c}
+    </span>
+  ));
+}
+
+function formatTime(timezone: string): string {
+  const fmt = new Intl.DateTimeFormat('en-GB', {
+    timeZone: timezone,
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+  const tzShort = new Intl.DateTimeFormat('en-GB', {
+    timeZone: timezone,
+    hour: '2-digit',
+    timeZoneName: 'short',
+  })
+    .formatToParts(new Date())
+    .find((p) => p.type === 'timeZoneName')?.value;
+  return `${fmt.format(new Date())}${tzShort ? ` ${tzShort}` : ''}`;
+}
+
+export default function Hero() {
+  const [time, setTime] = useState(() => formatTime(profile.timezone));
+
+  useEffect(() => {
+    setTime(formatTime(profile.timezone));
+    const t = window.setInterval(() => setTime(formatTime(profile.timezone)), 30 * 1000);
+    return () => window.clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const chars = document.querySelectorAll('.hero h1.name .char');
+    chars.forEach((el, i) => {
+      window.setTimeout(() => el.classList.add('in'), 120 + i * 30);
+    });
+  }, []);
+
+  const words = profile.name.split(' ');
+  const firstLine = words.slice(0, words.length - 1).join(' ');
+  const lastWord = words[words.length - 1];
+
+  return (
+    <section id="hero" className="hero">
+      <div className="wrap hero-grid">
+        <Reveal className="meta-top">
+          {profile.meta.titles.map((title, i) => (
+            <Fragment key={i}>
+              <span>{title}</span>
+              {i < profile.meta.titles.length - 1 && <span className="dot-sep">·</span>}
+            </Fragment>
+          ))}
+        </Reveal>
+
+        <h1 className="name">
+          <span className="first">{splitChars(firstLine)}</span>
+          <span className="last">{splitChars(lastWord)}</span>
+        </h1>
+
+        <Reveal as="p" className="practice serif-italic" delay={2}>
+          {profile.tagline}
+        </Reveal>
+
+        {profile.currently.nowShort && (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Reveal className="now-line" delay={3}>
+              <span className="arrow">{copy.hero.nowLineArrow}</span>
+              <span>{profile.currently.nowShort}</span>
+              <span className="dot-sep" style={{ color: 'var(--fg-faint)' }}>·</span>
+              <span className="blink">{time}</span>
+            </Reveal>
+          </div>
+        )}
+      </div>
+
+      <div className="scroll-cue">
+        <span>Scroll</span>
+        <div className="line" />
+      </div>
+    </section>
+  );
+}
