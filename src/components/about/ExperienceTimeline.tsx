@@ -19,6 +19,14 @@ export default function ExperienceTimeline() {
               {exp.type}
             </div>
             <div>
+              {slides.length > 0 && (
+                <Slideshow
+                  items={slides}
+                  alt={`${exp.company} photos`}
+                  fit="contain"
+                  className="experience-slideshow"
+                />
+              )}
               <h3 className="role">{exp.role}</h3>
               <div className="company">
                 {exp.companyUrl ? (
@@ -36,9 +44,6 @@ export default function ExperienceTimeline() {
                     <li key={i}>{h}</li>
                   ))}
                 </ul>
-              )}
-              {slides.length > 0 && (
-                <Slideshow items={slides} alt={`${exp.company} photos`} />
               )}
             </div>
           </article>

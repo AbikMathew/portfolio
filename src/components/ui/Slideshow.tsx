@@ -7,6 +7,8 @@ import { youtubePosterUrl } from '@/lib/youtube';
 import { cn } from '@/lib/utils';
 import type { ProjectMedia } from '@/types';
 
+type SlideshowFit = 'cover' | 'contain';
+
 interface SlideshowProps {
   items: ProjectMedia[];
   alt: string;
@@ -14,6 +16,10 @@ interface SlideshowProps {
   autoAdvanceMs?: number;
   className?: string;
   rounded?: boolean;
+  /** 'cover' = fill box, may crop. 'contain' = fit fully, blurred backdrop fills the rest. Default 'contain'. */
+  fit?: SlideshowFit;
+  /** Override backdrop color (for SVG/transparent images on solid bg) — overrides blurred-image backdrop. */
+  backdrop?: string;
 }
 
 function mediaSrc(m: ProjectMedia): string | null {
@@ -26,9 +32,11 @@ export default function Slideshow({
   items,
   alt,
   aspectRatio = '16 / 9',
-  autoAdvanceMs = 6000,
+  autoAdvanceMs = 3000,
   className,
   rounded = true,
+  fit = 'contain',
+  backdrop,
 }: SlideshowProps) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -65,7 +73,11 @@ export default function Slideshow({
     <div
       ref={containerRef}
       className={cn('slideshow', className)}
-      style={{ aspectRatio, borderRadius: rounded ? 10 : 0 }}
+      style={{
+        aspectRatio,
+        borderRadius: rounded ? 10 : 0,
+        background: backdrop,
+      }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -80,6 +92,8 @@ export default function Slideshow({
         const placeholderLabel =
           m.kind === 'placeholder' && m.label ? m.label : 'No preview';
         const isActive = i === active;
+        const showBlurredBackdrop = !backdrop && fit === 'contain' && !!src;
+
         return (
           <div
             key={i}
@@ -89,19 +103,40 @@ export default function Slideshow({
               inset: 0,
               opacity: isActive ? 1 : 0,
               visibility: isActive ? 'visible' : 'hidden',
-              transition: 'opacity 600ms var(--ease-out), visibility 0s linear ' + (isActive ? '0s' : '600ms'),
+              transition:
+                'opacity 600ms var(--ease-out), visibility 0s linear ' +
+                (isActive ? '0s' : '600ms'),
               pointerEvents: isActive ? 'auto' : 'none',
               zIndex: isActive ? 2 : 1,
             }}
             aria-hidden={!isActive}
           >
+            {showBlurredBackdrop && (
+              <Image
+                src={src as string}
+                alt=""
+                aria-hidden
+                fill
+                sizes="(max-width: 900px) 100vw, 1200px"
+                style={{
+                  objectFit: 'cover',
+                  filter: 'blur(28px) saturate(0.85) brightness(0.55)',
+                  transform: 'scale(1.18)',
+                  zIndex: 0,
+                }}
+              />
+            )}
             {src ? (
               <Image
                 src={src}
                 alt={`${alt} — ${i + 1} of ${items.length}`}
                 fill
                 sizes="(max-width: 900px) 100vw, 1200px"
-                style={{ objectFit: 'cover' }}
+                style={{
+                  objectFit: fit,
+                  zIndex: 1,
+                  position: 'absolute',
+                }}
                 priority={i === 0}
               />
             ) : (

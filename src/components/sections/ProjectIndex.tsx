@@ -1,23 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { projects, copy } from '@/data';
-import { getAssetPath } from '@/lib/asset';
-import { youtubePosterUrl } from '@/lib/youtube';
 import Button from '@/components/ui/Button';
 import SectionHead from '@/components/ui/SectionHead';
 import SplitTitle from '@/components/ui/SplitTitle';
+import PeekPanel from '@/components/projects/PeekPanel';
 import type { Project } from '@/types';
-
-function projectThumb(p: Project): { src: string | null; isVideo: boolean } {
-  const media = p.thumb ?? p.hero;
-  if (media.kind === 'image') return { src: getAssetPath(media.src), isVideo: false };
-  if (media.kind === 'video')
-    return { src: media.poster ?? youtubePosterUrl(media.videoId), isVideo: true };
-  return { src: null, isVideo: false };
-}
 
 export default function ProjectIndex() {
   const featured = projects.filter((p) => p.featured && !p.spotlight);
@@ -35,8 +25,6 @@ export default function ProjectIndex() {
     node.addEventListener('mousemove', onMove);
     return () => node.removeEventListener('mousemove', onMove);
   }, []);
-
-  const thumb = hovered ? projectThumb(hovered) : { src: null, isVideo: false };
 
   return (
     <section id="index" ref={sectionRef as never}>
@@ -74,16 +62,7 @@ export default function ProjectIndex() {
             </Link>
           ))}
 
-          {hovered && (
-            <div className="peek show" style={{ left: pos.x, top: pos.y }}>
-              {hovered.hero.kind === 'video' && <span className="video-icon">▶ Video</span>}
-              {thumb.src ? (
-                <Image src={thumb.src} alt={hovered.title} fill style={{ objectFit: 'cover' }} sizes="320px" />
-              ) : (
-                <div className="placeholder">No preview yet</div>
-              )}
-            </div>
-          )}
+          {hovered && <PeekPanel project={hovered} x={pos.x} y={pos.y} />}
         </div>
 
         <div

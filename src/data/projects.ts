@@ -53,6 +53,12 @@ export const projects: Project[] = [
       src: '/assets/projects/flashbuild/screen.png',
       alt: 'FlashBuild app builder UI',
     },
+    thumb: {
+      kind: 'image',
+      src: '/assets/projects/flashbuild/screen.png',
+      alt: 'FlashBuild app builder UI',
+    },
+    thumbAspect: 'wide',
     gallery: [
       { kind: 'image', src: '/assets/projects/flashbuild/screen.png', alt: 'FlashBuild main screen' },
       { kind: 'image', src: '/assets/projects/flashbuild/settings.png', alt: 'FlashBuild settings' },
@@ -89,9 +95,15 @@ export const projects: Project[] = [
     ],
     hero: {
       kind: 'image',
-      src: '/assets/projects/iconcal/month-view.jpg',
+      src: '/assets/projects/iconcal/month-view-light.png',
       alt: 'IconCal month view',
     },
+    thumb: {
+      kind: 'image',
+      src: '/assets/projects/iconcal/logo.png',
+      alt: 'IconCal logo',
+    },
+    thumbAspect: 'square',
     gallery: [
       { kind: 'image', src: '/assets/projects/iconcal/month-view-light.png', alt: 'IconCal month view (light)' },
       { kind: 'image', src: '/assets/projects/iconcal/icons-toolbox.jpg', alt: 'IconCal icons toolbox' },
@@ -135,6 +147,12 @@ export const projects: Project[] = [
       src: '/assets/projects/couplr/explore-tab.jpg',
       alt: 'Couplr explore tab',
     },
+    thumb: {
+      kind: 'image',
+      src: '/assets/projects/couplr/logo.webp',
+      alt: 'Couplr logo',
+    },
+    thumbAspect: 'square',
     gallery: [
       { kind: 'image', src: '/assets/projects/couplr/create-account.jpg', alt: 'Couplr create account flow' },
       { kind: 'image', src: '/assets/projects/couplr/explore-tab.jpg', alt: 'Couplr explore tab' },
@@ -165,7 +183,18 @@ export const projects: Project[] = [
       'Cross-platform time tracker on the Teamwork API',
       'FFMPEG-based animation/media generation tool',
     ],
-    hero: { kind: 'placeholder', label: 'No preview yet' },
+    hero: {
+      kind: 'image',
+      src: '/assets/projects/wrg-suite/logo.svg',
+      alt: 'White Rabbit logo',
+    },
+    thumb: {
+      kind: 'image',
+      src: '/assets/projects/wrg-suite/logo.svg',
+      alt: 'White Rabbit logo',
+    },
+    thumbAspect: 'square',
+    thumbBackground: '#000',
     links: {},
     featured: true,
   },

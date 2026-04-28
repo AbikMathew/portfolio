@@ -43,6 +43,8 @@ export interface ProjectLinks {
   caseStudy?: string;
 }
 
+export type ThumbAspect = 'wide' | 'square';
+
 export interface Project {
   slug: string;
   num: string;
@@ -57,6 +59,10 @@ export interface Project {
   contributions?: string[];
   hero: ProjectMedia;
   thumb?: ProjectMedia;
+  /** Shape of the home Index hover-peek box. 'wide' (16:10) or 'square' (1:1). Default 'wide'. */
+  thumbAspect?: ThumbAspect;
+  /** Solid background for the peek/thumb (use when image is a transparent SVG/logo, e.g. WRG). */
+  thumbBackground?: string;
   gallery?: ProjectMedia[];
   links: ProjectLinks;
   spotlight?: boolean;

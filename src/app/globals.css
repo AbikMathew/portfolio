@@ -713,11 +713,8 @@ section {
 .idx .row:hover .arrow { color: var(--fg); transform: translateX(6px); }
 
 /* Cursor-tracking peek panel */
-.idx .peek {
-  position: absolute;
+.peek {
   pointer-events: none;
-  width: 320px;
-  height: 200px;
   background: var(--ink-2);
   border: 1px solid var(--hairline);
   border-radius: 8px;
@@ -729,12 +726,9 @@ section {
   top: 0; left: 0;
   box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--hairline);
 }
-.idx .peek.show {
+.peek.show {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-}
-.idx .peek img {
-  width: 100%; height: 100%; object-fit: cover;
 }
 .idx .peek .placeholder {
   width: 100%; height: 100%;

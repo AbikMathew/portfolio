@@ -38,14 +38,11 @@ export const experience: Experience[] = [
       'Helped shape the long-term vision across quick commerce, video streaming, and social',
     ],
     images: [
-      '/assets/experience/mcabee-tl/first-team-meeting.jpg',
       '/assets/experience/mcabee-tl/couplr-team-meet.jpg',
       '/assets/experience/mcabee-tl/solo-dev-day.jpg',
       '/assets/experience/mcabee-tl/dev-on-mac.jpg',
-      '/assets/experience/mcabee-tl/home-work-setup.jpg',
+      '/assets/experience/mcabee-tl/dev-on-mac-2.jpg',
       '/assets/experience/mcabee-tl/bangalore-investor-pitch.jpg',
-      '/assets/experience/mcabee-tl/team-lunch.jpg',
-      '/assets/experience/mcabee-tl/collaboration.jpg',
       '/assets/experience/mcabee-tl/id-card.jpg',
     ],
   },
@@ -58,6 +55,12 @@ export const experience: Experience[] = [
     type: 'Hybrid · Kochi',
     description:
       'Joined Mcabee as the second engineer on the mobile team. Built core features of Firstlook (later rebranded as Couplr) from scratch — feeds, chat, posts — collaborating closely with backend, ML, and design.',
+    images: [
+      '/assets/experience/mcabee-sde1/first-team-meeting.jpg',
+      '/assets/experience/mcabee-sde1/home-work-setup.jpg',
+      '/assets/experience/mcabee-sde1/team-lunch.jpg',
+      '/assets/experience/mcabee-sde1/collaboration.jpg',
+    ],
   },
   {
     id: 'wrg',

@@ -1,21 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { projects } from '@/data';
-import { getAssetPath } from '@/lib/asset';
-import { youtubePosterUrl } from '@/lib/youtube';
 import SplitTitle from '@/components/ui/SplitTitle';
+import PeekPanel from './PeekPanel';
 import type { Project } from '@/types';
-
-function projectThumb(p: Project) {
-  const m = p.thumb ?? p.hero;
-  if (m.kind === 'image') return { src: getAssetPath(m.src), isVideo: false };
-  if (m.kind === 'video')
-    return { src: m.poster ?? youtubePosterUrl(m.videoId), isVideo: true };
-  return { src: null, isVideo: false };
-}
 
 function groupByYear(items: Project[]): Array<[string, Project[]]> {
   const map = new Map<string, Project[]>();
@@ -45,8 +35,6 @@ export default function ProjectsIndexGrid() {
     return () => node.removeEventListener('mousemove', onMove);
   }, []);
 
-  const thumb = hovered ? projectThumb(hovered) : { src: null, isVideo: false };
-
   return (
     <div className="projects-index" ref={sectionRef}>
       {grouped.map(([year, items]) => (
@@ -75,19 +63,7 @@ export default function ProjectsIndexGrid() {
         </div>
       ))}
 
-      {hovered && (
-        <div
-          className="peek show"
-          style={{ left: pos.x, top: pos.y, position: 'fixed' }}
-        >
-          {hovered.hero.kind === 'video' && <span className="video-icon">▶ Video</span>}
-          {thumb.src ? (
-            <Image src={thumb.src} alt={hovered.title} fill style={{ objectFit: 'cover' }} sizes="320px" />
-          ) : (
-            <div className="placeholder">No preview yet</div>
-          )}
-        </div>
-      )}
+      {hovered && <PeekPanel project={hovered} x={pos.x} y={pos.y} position="fixed" />}
     </div>
   );
 }
