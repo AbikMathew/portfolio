@@ -187,6 +187,72 @@ main, .layer {
 .btn:hover .arrow { transform: translateX(4px); }
 .btn-quiet { border-color: var(--hairline); }
 
+/* Shimmer CTA — continuous diagonal sheen + soft glassmorphic tint.
+   Pauses on hover so the inverted hover state stays clean. */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 0 rgba(255, 255, 255, 0);
+  animation: btn-breathe 3.6s var(--ease-out) infinite;
+}
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.18) 48%,
+    rgba(255, 255, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.18) 52%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: btn-shimmer-sweep 3.6s var(--ease-out) infinite;
+}
+.btn-shimmer:hover {
+  animation: none;
+  box-shadow: none;
+}
+.btn-shimmer:hover::before {
+  animation: none;
+  opacity: 0;
+}
+@keyframes btn-shimmer-sweep {
+  0% { transform: translateX(-120%); }
+  60% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+@keyframes btn-breathe {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      0 0 24px 2px rgba(255, 255, 255, 0.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-shimmer,
+  .btn-shimmer::before { animation: none; }
+}
+
 /* Tag chip */
 .chip {
   display: inline-flex;

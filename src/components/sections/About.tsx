@@ -71,7 +71,7 @@ export default function About() {
             </div>
 
             <div style={{ marginTop: 32, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-              <Button href="/about" arrow="→">
+              <Button href="/about" arrow="→" shimmer>
                 {copy.home.about.buttons.fullStory}
               </Button>
               <Button
