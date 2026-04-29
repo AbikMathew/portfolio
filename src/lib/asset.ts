@@ -1,5 +1,5 @@
-const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/portfolio' : '';
+// Served from apex domain abik.in — no basePath prefix needed.
+const basePath = '';
 
 export function getAssetPath(path: string): string {
   if (!path) return path;

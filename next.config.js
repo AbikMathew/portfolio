@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-
+// Served from apex domain abik.in, so no basePath/assetPrefix.
 const nextConfig = {
     output: 'export',
     trailingSlash: true,
-    basePath: isProd ? '/portfolio' : '',
-    assetPrefix: isProd ? '/portfolio/' : '',
     images: {
         unoptimized: true,
     },
