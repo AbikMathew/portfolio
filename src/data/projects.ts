@@ -112,7 +112,9 @@ export const projects: Project[] = [
       { kind: 'image', src: '/assets/projects/iconcal/settings.jpg', alt: 'IconCal settings' },
       { kind: 'image', src: '/assets/projects/iconcal/splash.jpg', alt: 'IconCal splash' },
     ],
-    links: {},
+    links: {
+      live: 'https://play.google.com/store/apps/details?id=com.iconcal.app',
+    },
     featured: true,
   },
   {

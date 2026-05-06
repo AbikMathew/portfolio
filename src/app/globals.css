@@ -204,7 +204,7 @@ main, .layer {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     0 0 0 0 rgba(255, 255, 255, 0);
-  animation: btn-breathe 3.6s var(--ease-out) infinite;
+  animation: btn-breathe 3s var(--ease-out) infinite;
 }
 .btn-shimmer::before {
   content: '';
@@ -221,7 +221,7 @@ main, .layer {
     transparent 70%
   );
   transform: translateX(-120%);
-  animation: btn-shimmer-sweep 3.6s var(--ease-out) infinite;
+  animation: btn-shimmer-sweep 3s linear infinite;
 }
 .btn-shimmer:hover {
   animation: none;
@@ -233,7 +233,7 @@ main, .layer {
 }
 @keyframes btn-shimmer-sweep {
   0% { transform: translateX(-120%); }
-  60% { transform: translateX(120%); }
+  85% { transform: translateX(120%); }
   100% { transform: translateX(120%); }
 }
 @keyframes btn-breathe {
