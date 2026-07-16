@@ -46,7 +46,7 @@ export default function About() {
               <span className="value">
                 {profile.currently.nowLink ? (
                   <>
-                    Senior Frontend Engineer (Flutter) at{' '}
+                    {profile.currently.now} at{' '}
                     <a
                       href={profile.currently.nowLink.url}
                       target="_blank"

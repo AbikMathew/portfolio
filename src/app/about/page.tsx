@@ -28,7 +28,7 @@ export default function AboutPage() {
                   <span className="it">{copy.about.pageHeadingItalic}</span>
                 </>
               }
-              metaRight={[profile.location, 'Open to senior IC + lead roles.']}
+              metaRight={[profile.location, 'Open to freelance & select roles.']}
             />
 
             <div className="about">
@@ -55,7 +55,7 @@ export default function AboutPage() {
                   <span className="value">
                     {profile.currently.nowLink ? (
                       <>
-                        Senior Frontend Engineer (Flutter) at{' '}
+                        {profile.currently.now} at{' '}
                         <a
                           href={profile.currently.nowLink.url}
                           target="_blank"

@@ -2,95 +2,30 @@ import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    slug: 'z-ro',
-    num: '01',
-    title: 'Z-ro',
-    year: '2026',
-    role: 'Creator',
-    category: 'AI · Desktop · Rust',
-    summary:
-      'A Rust + Tauri AI co-worker that lives on your desktop — surfaces context, drafts work, and stays out of the way until you ask.',
-    longDescription: [
-      'Z-ro is an experiment in what an AI co-worker should feel like when it has a permanent seat on your desktop instead of a tab in your browser. Native, fast, and quiet.',
-      'Built on Rust + Tauri for a small footprint and direct OS integration. The UI layer is pragmatic web tech, the surface is calm, and the heavy lifting happens in the background.',
-    ],
-    stack: ['Rust', 'Tauri', 'TypeScript', 'AI'],
-    contributions: [
-      'Designed and implemented the desktop architecture in Rust + Tauri',
-      'Built the lightweight UI surface and global hotkey layer',
-      'Integrated AI providers behind a single calm interaction surface',
-    ],
-    hero: { kind: 'video', provider: 'youtube', videoId: 'FS2_wboDtZ4' },
-    links: {
-      demo: 'https://youtu.be/FS2_wboDtZ4',
-      repo: 'https://github.com/AbikMathew/z-ro-coworker',
-    },
-    spotlight: true,
-    featured: true,
-    spotlightTagline: '— a co-worker that lives on your desktop.',
-  },
-  {
-    slug: 'flashbuild',
-    num: '02',
-    title: 'FlashBuild',
-    year: '2026',
-    role: 'Creator',
-    category: 'AI · Web · Next.js',
-    summary:
-      'An AI app builder — describe an idea, get a runnable Next.js project. Iteration loop optimised for getting from prompt to working preview as fast as possible.',
-    longDescription: [
-      'FlashBuild compresses the distance between idea and running app. Type what you want, watch the project scaffold itself, and iterate via natural language.',
-      'Built on Next.js with a streaming code-generation pipeline and a live preview surface that updates as the model writes.',
-    ],
-    stack: ['Next.js', 'TypeScript', 'AI', 'Streaming'],
-    contributions: [
-      'Designed the prompt-to-preview pipeline',
-      'Built the streaming code-generation surface',
-      'Wired live preview with hot-reload semantics',
-    ],
-    hero: {
-      kind: 'image',
-      src: '/assets/projects/flashbuild/screen.png',
-      alt: 'FlashBuild app builder UI',
-    },
-    thumb: {
-      kind: 'image',
-      src: '/assets/projects/flashbuild/screen.png',
-      alt: 'FlashBuild app builder UI',
-    },
-    thumbAspect: 'wide',
-    gallery: [
-      { kind: 'image', src: '/assets/projects/flashbuild/screen.png', alt: 'FlashBuild main screen' },
-      { kind: 'image', src: '/assets/projects/flashbuild/settings.png', alt: 'FlashBuild settings' },
-    ],
-    links: {
-      repo: 'https://github.com/AbikMathew/flash-build',
-    },
-    featured: true,
-  },
-  {
     slug: 'itechsim',
-    num: '03',
+    num: '01',
     title: 'iTechSIM',
     year: '2026',
-    role: 'Freelance Engineer',
+    role: 'Co-Founder & Solo Developer',
     category: 'E-commerce · Travel',
     summary:
-      'An Australian travel-eSIM store built end-to-end solo — live catalog, dual payment rails, automated eSIM delivery. Real customers, real revenue.',
+      'A travel-eSIM store I co-founded with an Australian team and built myself — live catalogue, Stripe and PayPal checkout, and automated eSIM delivery in seconds.',
     longDescription: [
-      'iTechSIM sells prepaid travel data for 50 destinations. A traveller picks a country, pays, and gets a QR code by email within seconds — online the moment they land. I built the entire store solo as a freelance engagement: storefront, checkout, fulfilment, and the operations tooling behind it.',
+      'iTechSIM sells prepaid travel data for 50 destinations. A traveller picks a country, pays, and gets a QR code by email within seconds — online the moment they land. I co-founded it with an Australian team and now build the entire product myself: storefront, checkout, fulfilment, and the operations tooling behind it.',
       'The heart of it is a commerce pipeline. A nightly sync pulls the wholesale eSIM feed into Supabase with rule-based retail pricing. Stripe Checkout — Payment Element, Apple Pay, Google Pay, Link, promo codes — and an independent PayPal rail handle the money. A webhook-driven fulfilment flow provisions each eSIM with the supplier and delivers the QR, with operator alerts on failure and refunds wired to both payment providers.',
       'Around the money path: magic-link auth with a usage dashboard, verified-buyer reviews with pre-publish moderation, an admin panel for pricing rules, orders and refunds, transactional email for delivery, usage alerts and review invites, Sentry error tracking, and a full staging environment mirroring production.',
+      'The way it gets built is half the story: an AI-native workflow where I design in Claude and implement in Claude Code, shipping one feature at a time. A working MVP went live in a week; a marketing-ready feature set followed within three. Beyond the code, I shape the roadmap, the marketing, and the plan to grow it together with the founding team.',
     ],
     stack: ['Next.js', 'TypeScript', 'Supabase', 'Stripe', 'PayPal', 'Vercel'],
     contributions: [
+      'Co-founded the venture and shaped product direction, marketing, and launch with the founding team',
       'Built the whole product solo: Next.js App Router storefront, Supabase data layer, staging + production environments on Vercel',
       'Integrated Stripe Checkout Sessions — Payment Element, Apple Pay / Google Pay express checkout, Link, server-side promo codes',
       'Added an independent PayPal rail (Orders API v2) with signature-verified webhooks and automated refunds across both providers',
-      'Automated the supply chain: nightly wholesale catalog sync, margin-based pricing rules, post-payment provisioning with webhook reconciliation',
+      'Automated the supply chain: nightly wholesale catalogue sync, margin-based pricing rules, post-payment provisioning with webhook reconciliation',
       'Transactional email pipeline: instant QR delivery, install nudges, usage alerts, review invites',
       'Verified-buyer reviews with moderation queue and aggregate-rating JSON-LD for SEO',
-      'Admin panel: order search, refunds, pricing rules, catalog sync, review moderation',
+      'Admin panel: order search, refunds, pricing rules, catalogue sync, review moderation',
     ],
     hero: {
       kind: 'image',
@@ -113,14 +48,16 @@ export const projects: Project[] = [
     links: {
       live: 'https://www.itechsim.com',
     },
+    spotlight: true,
     featured: true,
+    spotlightTagline: '— a travel-eSIM venture I co-founded and built from scratch.',
   },
   {
     slug: 'mayflower',
-    num: '04',
+    num: '02',
     title: 'Mayflower',
     year: '2026',
-    role: 'Freelance Engineer',
+    role: 'Solo Developer',
     category: 'Operations · PWA',
     summary:
       'Work-order and capacity management for a designer-textile tailoring studio — job cards, garment measurements, and scheduling that respects what the shop can actually sew in a day.',
@@ -158,6 +95,71 @@ export const projects: Project[] = [
       { kind: 'image', src: '/assets/projects/mayflower/login.png', alt: 'Mayflower sign-in (design prototype)' },
     ],
     links: {},
+    featured: true,
+  },
+  {
+    slug: 'z-ro',
+    num: '03',
+    title: 'Z-ro',
+    year: '2026',
+    role: 'Creator',
+    category: 'AI · Desktop · Rust',
+    summary:
+      'A Rust + Tauri AI co-worker that lives on your desktop — surfaces context, drafts work, and stays out of the way until you ask.',
+    longDescription: [
+      'Z-ro is an experiment in what an AI co-worker should feel like when it has a permanent seat on your desktop instead of a tab in your browser. Native, fast, and quiet.',
+      'Built on Rust + Tauri for a small footprint and direct OS integration. The UI layer is pragmatic web tech, the surface is calm, and the heavy lifting happens in the background.',
+    ],
+    stack: ['Rust', 'Tauri', 'TypeScript', 'AI'],
+    contributions: [
+      'Designed and implemented the desktop architecture in Rust + Tauri',
+      'Built the lightweight UI surface and global hotkey layer',
+      'Integrated AI providers behind a single calm interaction surface',
+    ],
+    hero: { kind: 'video', provider: 'youtube', videoId: 'FS2_wboDtZ4' },
+    links: {
+      demo: 'https://youtu.be/FS2_wboDtZ4',
+      repo: 'https://github.com/AbikMathew/z-ro-coworker',
+    },
+    featured: true,
+  },
+  {
+    slug: 'flashbuild',
+    num: '04',
+    title: 'FlashBuild',
+    year: '2026',
+    role: 'Creator',
+    category: 'AI · Web · Next.js',
+    summary:
+      'An AI app builder — describe an idea, get a runnable Next.js project. Iteration loop optimised for getting from prompt to working preview as fast as possible.',
+    longDescription: [
+      'FlashBuild compresses the distance between idea and running app. Type what you want, watch the project scaffold itself, and iterate via natural language.',
+      'Built on Next.js with a streaming code-generation pipeline and a live preview surface that updates as the model writes.',
+    ],
+    stack: ['Next.js', 'TypeScript', 'AI', 'Streaming'],
+    contributions: [
+      'Designed the prompt-to-preview pipeline',
+      'Built the streaming code-generation surface',
+      'Wired live preview with hot-reload semantics',
+    ],
+    hero: {
+      kind: 'image',
+      src: '/assets/projects/flashbuild/screen.png',
+      alt: 'FlashBuild app builder UI',
+    },
+    thumb: {
+      kind: 'image',
+      src: '/assets/projects/flashbuild/screen.png',
+      alt: 'FlashBuild app builder UI',
+    },
+    thumbAspect: 'wide',
+    gallery: [
+      { kind: 'image', src: '/assets/projects/flashbuild/screen.png', alt: 'FlashBuild main screen' },
+      { kind: 'image', src: '/assets/projects/flashbuild/settings.png', alt: 'FlashBuild settings' },
+    ],
+    links: {
+      repo: 'https://github.com/AbikMathew/flash-build',
+    },
     featured: true,
   },
   {

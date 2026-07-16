@@ -4,15 +4,15 @@ export const profile: Profile = {
   name: 'Abik Mathew George',
   shortName: 'AMG',
   tagline:
-    'A senior engineer building mobile software for the past four years — mostly in Flutter, increasingly in Swift. I care about the seam between architecture and the way an app feels in the hand.',
+    'A senior engineer building software for the past four years — Flutter and Swift on mobile, now Next.js on the web too. I care about the seam between architecture and the way a product feels to use — lately as co-founder of iTechSIM, where I build the whole thing myself.',
   location: 'Kochi, India · IST',
   timezone: 'Asia/Kolkata',
   bio: [
-    'I started in a fast-moving Kerala agency, learned what production really means at a startup that scaled past 50K downloads, and now lead Flutter and native iOS work for US-based product teams.',
-    'The work I am most proud of lives in the seam between architecture and feel: clean separation underneath, calm gestures on top. I keep a small suite of internal tools running in the background — bug tracking, time, media — because good systems make good apps.',
+    'I started in a fast-moving Kerala agency, learned what production really means at a startup that scaled past 50K downloads, led Flutter and native iOS work for US product teams, and now build whole products as co-founder of iTechSIM.',
+    'The work I am most proud of lives in the seam between architecture and feel: clean separation underneath, calm gestures on top. These days I take products from a blank Figma to a live URL solo — design, engineering, and the operations tooling behind them — because good systems make good products.',
   ],
   status: {
-    label: 'Open to senior roles · 2026',
+    label: 'Co-founder @ iTechSIM · open to work',
     tone: 'open',
   },
   contact: {
@@ -22,14 +22,14 @@ export const profile: Profile = {
   meta: {
     titles: [
       'Senior Software Engineer',
-      'Mobile · Flutter · iOS',
+      'Mobile · Full-stack · Co-founder',
       'Portfolio v2 — 2026',
     ],
   },
   currently: {
-    now: 'Senior Frontend Engineer (Flutter) at Ogma Conceptions',
-    nowShort: 'Now leading mobile @ Ogma Conceptions',
-    nowLink: { label: 'Ogma Conceptions', url: 'https://www.ogmaconceptions.com/' },
-    stack: 'Flutter · Dart · Swift / SwiftUI · Firebase · AWS',
+    now: 'Co-Founder & Solo Developer',
+    nowShort: 'Now co-founding & building iTechSIM',
+    nowLink: { label: 'iTechSIM', url: 'https://www.itechsim.com' },
+    stack: 'Flutter · Next.js · TypeScript · Supabase · Swift',
   },
 };

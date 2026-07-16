@@ -30,7 +30,7 @@ export const copy = {
       heading: 'The',
       headingItalic: 'person',
       headingSuffix: 'behind it.',
-      metaRight: ['Kochi, India · IST', 'Open to senior IC + lead roles.'],
+      metaRight: ['Kochi, India · IST', 'Open to freelance & select roles.'],
       copyHeading: 'Four years of mobile —',
       copyHeadingItalic: 'getting more particular every year.',
       currentlyLabels: { now: 'Now', stack: 'Stack', reach: 'Reach' },
@@ -101,15 +101,15 @@ export const copy = {
   meta: {
     home: {
       title: 'Abik Mathew George — Senior Software Engineer',
-      description: 'Senior software engineer building mobile and AI software in Flutter, Swift, Rust, and Next.js. Portfolio v2.',
+      description: 'Senior engineer and co-founder — building mobile and web products in Flutter, Swift, and Next.js. Portfolio v2.',
     },
     projects: {
       title: 'Projects — Abik Mathew George',
-      description: 'Selected projects: Z-ro, FlashBuild, IconCal, Couplr, and more.',
+      description: 'Selected projects: iTechSIM, Mayflower, Z-ro, IconCal, and more.',
     },
     about: {
       title: 'About — Abik Mathew George',
-      description: 'Four years of mobile. Currently leading mobile @ Ogma Conceptions. Open to senior IC + lead roles.',
+      description: 'Four years of mobile, now building whole products. Co-founder & solo developer at iTechSIM. Open to freelance & select roles.',
     },
     notFound: {
       title: '404 — Abik Mathew George',

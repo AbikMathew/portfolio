@@ -2,21 +2,39 @@ import type { Experience } from '@/types';
 
 export const experience: Experience[] = [
   {
+    id: 'itechsim',
+    company: 'iTechSIM',
+    companyUrl: 'https://www.itechsim.com',
+    role: 'Co-Founder & Solo Developer',
+    period: 'Mar 2026 — Present',
+    type: 'Remote · Australian venture',
+    description:
+      'Co-founded iTechSIM, an Australian travel-eSIM venture, and now build the whole product myself — design, engineering, and shipping — while collaborating with the founding team on direction and go-to-market. Four years of mobile and web work, poured into one product.',
+    highlights: [
+      'Co-founded the venture and built the product end-to-end: storefront, checkout, eSIM fulfilment, and admin tooling',
+      'AI-native workflow — design in Claude, implement in Claude Code — shipping features one at a time',
+      'A working MVP went live in a week; a marketing-ready feature set followed within three',
+      'Integrated Stripe and PayPal payment rails with automated eSIM delivery and refunds',
+      'Drove marketing content and launch strategy alongside the founding team',
+      'Set the product roadmap and growth plan with the founding team',
+    ],
+    current: true,
+  },
+  {
     id: 'ogma',
     company: 'Ogma Conceptions',
     companyUrl: 'https://www.ogmaconceptions.com/',
     role: 'Senior Frontend Developer (Flutter)',
-    period: 'Jul 2025 — Present',
+    period: 'Jul 2025 — Mar 2026',
     type: 'Remote · Distributed (Philippines · China · US)',
     description:
-      'Leading Flutter mobile and web development for US clients, with rapid AI-assisted prototyping to ship things quickly. Working across a distributed team spanning the Philippines, China, and the US.',
+      'Led Flutter mobile and web development for US clients, with rapid AI-assisted prototyping to ship things quickly. Worked across a distributed team spanning the Philippines, China, and the US.',
     highlights: [
       'Shipped 7+ client projects, including ones that needed unusually fast turnarounds',
       'Used AI-assisted prototyping to compress idea-to-demo cycles for clients',
       'Closed tickets that had been stuck open for months — turning unhappy clients into satisfied ones',
       'Strong async + cross-timezone communication across a four-continent team',
     ],
-    current: true,
   },
   {
     id: 'mcabee-tl',
